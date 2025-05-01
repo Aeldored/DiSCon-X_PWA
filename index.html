@@ -401,6 +401,79 @@
       .card-list {
         padding: 1rem;
       }
+
+      /* Toggle switch */
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e2e8f0;
+        transition: .4s;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: .4s;
+      }
+
+      input:checked + .slider {
+        background-color: var(--primary);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+
+      .slider.round {
+        border-radius: 24px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      /* Badges */
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+      }
+
+      .badge-blue {
+        background-color: rgba(37, 99, 235, 0.1);
+        color: var(--primary);
+      }
+
+      .badge-green {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--success);
+      }
     </style>
   </head>
   <body>
@@ -432,8 +505,8 @@
         <button id="notification-btn" class="p-2">
           <i class="far fa-bell"></i>
         </button>
-        <button id="profile-btn" class="p-2 ml-2">
-          <i class="far fa-user-circle"></i>
+        <button id="settings-btn" class="p-2 ml-2">
+          <i class="fas fa-cog"></i>
         </button>
       </div>
     </header>
@@ -450,7 +523,7 @@
       <section id="home-page" class="page active">
         <!-- Map view -->
         <div class="map-container relative">
-          <div class="absolute inset-0" style="background-color: #e2e8f0">
+          <div class="absolute inset-0" style="background-image: url('Map2.png'); background-size: cover; background-position: center;">
             <!-- Map placeholder with simulated pins -->
             <div
               style="position: absolute; top: 30%; left: 20%"
@@ -1070,110 +1143,20 @@
         </div>
       </section>
 
-      <!-- Profile Page -->
-      <section id="profile-page" class="page">
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white">
-          <div class="flex items-center mb-4">
-            <div
-              class="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4"
-            >
-              <i class="fas fa-user text-blue-600 text-2xl"></i>
-            </div>
-            <div>
-              <h2 class="text-xl font-bold">Juan Dela Cruz</h2>
-              <p class="text-blue-200">juan.delacruz@example.com</p>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="flex-1 text-center">
-              <p class="text-2xl font-bold">42</p>
-              <p class="text-xs text-blue-200">Networks Scanned</p>
-            </div>
-            <div class="flex-1 text-center">
-              <p class="text-2xl font-bold">3</p>
-              <p class="text-xs text-blue-200">Threats Detected</p>
-            </div>
-            <div class="flex-1 text-center">
-              <p class="text-2xl font-bold">5</p>
-              <p class="text-xs text-blue-200">Safe Networks</p>
-            </div>
-          </div>
+      <!-- Settings Page -->
+      <section id="settings-page" class="page">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-4 text-white">
+          <h2 class="text-xl font-bold mb-1">App Settings</h2>
+          <p class="text-blue-100">
+            Customize DiSCon-X to match your preferences
+          </p>
         </div>
 
         <div class="p-4">
-          <!-- Settings list -->
+          <!-- General Settings -->
           <div class="bg-white rounded-lg shadow-sm mb-4">
             <div class="p-4 border-b border-gray-100">
-              <h3 class="font-bold">Account Settings</h3>
-            </div>
-
-            <div class="divide-y divide-gray-100">
-              <a href="#" class="flex items-center justify-between p-4">
-                <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
-                  >
-                    <i class="fas fa-user-edit text-blue-600"></i>
-                  </div>
-                  <span>Edit Profile</span>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4">
-                <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
-                  >
-                    <i class="fas fa-bell text-blue-600"></i>
-                  </div>
-                  <span>Notifications</span>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4">
-                <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
-                  >
-                    <i class="fas fa-shield-alt text-blue-600"></i>
-                  </div>
-                  <span>Security</span>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4">
-                <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
-                  >
-                    <i class="fas fa-lock text-blue-600"></i>
-                  </div>
-                  <span>Privacy</span>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-              </a>
-
-              <a href="#" class="flex items-center justify-between p-4">
-                <div class="flex items-center">
-                  <div
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
-                  >
-                    <i class="fas fa-database text-blue-600"></i>
-                  </div>
-                  <span>Data & Storage</span>
-                </div>
-                <i class="fas fa-chevron-right text-gray-400"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- App settings -->
-          <div class="bg-white rounded-lg shadow-sm mb-4">
-            <div class="p-4 border-b border-gray-100">
-              <h3 class="font-bold">App Settings</h3>
+              <h3 class="font-bold">General Settings</h3>
             </div>
 
             <div class="divide-y divide-gray-100">
@@ -1226,29 +1209,160 @@
                   <span class="slider round"></span>
                 </label>
               </div>
+            </div>
+          </div>
 
-              <a href="#" class="flex items-center justify-between p-4">
+          <!-- Security Settings -->
+          <div class="bg-white rounded-lg shadow-sm mb-4">
+            <div class="p-4 border-b border-gray-100">
+              <h3 class="font-bold">Security Settings</h3>
+            </div>
+
+            <div class="divide-y divide-gray-100">
+              <div class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-shield-alt text-red-600"></i>
+                  </div>
+                  <div>
+                    <span>Auto-Block Suspicious Networks</span>
+                    <p class="text-xs text-gray-500">
+                      Automatically block detected evil twin networks
+                    </p>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-bell text-orange-600"></i>
+                  </div>
+                  <div>
+                    <span>Alert Notifications</span>
+                    <p class="text-xs text-gray-500">
+                      Receive alerts for security threats
+                    </p>
+                  </div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between p-4">
                 <div class="flex items-center">
                   <div
                     class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
                   >
-                    <i class="fas fa-sync-alt text-blue-600"></i>
+                    <i class="fas fa-wifi text-blue-600"></i>
                   </div>
-                  <span>Check for Updates</span>
+                  <div>
+                    <span>Background Scanning</span>
+                    <p class="text-xs text-gray-500">
+                      Periodically scan for networks in the background
+                    </p>
+                  </div>
                 </div>
-                <div
-                  class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded"
-                >
-                  Up to date
+                <label class="switch">
+                  <input type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+              
+              <div class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-lock text-green-600"></i>
+                  </div>
+                  <div>
+                    <span>VPN Suggestions</span>
+                    <p class="text-xs text-gray-500">
+                      Suggest using VPN on unsecured networks
+                    </p>
+                  </div>
                 </div>
-              </a>
+                <label class="switch">
+                  <input type="checkbox" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
             </div>
           </div>
 
-          <!-- Support -->
+          <!-- Data Management -->
           <div class="bg-white rounded-lg shadow-sm mb-4">
             <div class="p-4 border-b border-gray-100">
-              <h3 class="font-bold">Support</h3>
+              <h3 class="font-bold">Data Management</h3>
+            </div>
+
+            <div class="divide-y divide-gray-100">
+              <div class="p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="flex items-center">
+                    <div
+                      class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3"
+                    >
+                      <i class="fas fa-database text-purple-600"></i>
+                    </div>
+                    <span>Storage Used</span>
+                  </div>
+                  <span class="text-gray-500">24.5 MB</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    class="bg-purple-600 h-2 rounded-full"
+                    style="width: 25%"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-history text-blue-600"></i>
+                  </div>
+                  <div>
+                    <span>Network History</span>
+                    <p class="text-xs text-gray-500">
+                      Set how long to keep your network history
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <span class="text-gray-500 mr-2">30 days</span>
+                  <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+              </div>
+
+              <button class="flex items-center p-4 w-full text-left">
+                <div
+                  class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3"
+                >
+                  <i class="fas fa-trash-alt text-red-600"></i>
+                </div>
+                <span class="text-red-600">Clear All Data</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="bg-white rounded-lg shadow-sm mb-4">
+            <div class="p-4 border-b border-gray-100">
+              <h3 class="font-bold">About</h3>
             </div>
 
             <div class="divide-y divide-gray-100">
@@ -1287,15 +1401,37 @@
                 </div>
                 <div class="text-xs text-gray-500">v1.2.5</div>
               </a>
+              
+              <a href="#" class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-file-alt text-blue-600"></i>
+                  </div>
+                  <span>Privacy Policy</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </a>
+              
+              <a href="#" class="flex items-center justify-between p-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-file-contract text-blue-600"></i>
+                  </div>
+                  <span>Terms of Service</span>
+                </div>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+              </a>
             </div>
           </div>
-
-          <!-- Sign out button -->
-          <button
-            class="w-full py-3 bg-red-100 text-red-600 rounded-lg font-medium mb-8"
-          >
-            Sign Out
-          </button>
+          
+          <div class="text-center text-gray-500 text-xs mb-8 mt-4">
+            DiSCon-X: DICT-CALABARZON Secure Connect<br>
+            Department of Information and Communications Technology
+          </div>
         </div>
       </section>
     </main>
@@ -1318,68 +1454,11 @@
         <i class="fas fa-book"></i>
         <span>Learn</span>
       </a>
-      <a href="#" class="nav-item" data-page="profile-page">
-        <i class="fas fa-user"></i>
-        <span>Profile</span>
+      <a href="#" class="nav-item" data-page="settings-page">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
       </a>
     </nav>
-
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-      <div class="modal-content">
-        <div class="p-6">
-          <div class="flex justify-between items-center mb-6">
-            <h3 class="text-xl font-bold">Sign In</h3>
-            <button class="modal-close">
-              <i class="fas fa-times text-gray-400 text-xl"></i>
-            </button>
-          </div>
-
-          <form>
-            <div class="mb-4">
-              <label class="block text-gray-700 text-sm font-medium mb-2"
-                >Email Address</label
-              >
-              <input
-                type="email"
-                class="form-input"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-gray-700 text-sm font-medium mb-2"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-input"
-                placeholder="Enter your password"
-                required
-              />
-              <div class="flex justify-end mt-1">
-                <a href="#" class="text-sm text-blue-600">Forgot Password?</a>
-              </div>
-            </div>
-
-            <button type="submit" class="primary-btn w-full">Sign In</button>
-          </form>
-
-          <div class="mt-6 text-center">
-            <p class="text-gray-600">
-              Don't have an account?
-              <a
-                href="#"
-                id="switch-to-register"
-                class="text-blue-600 font-medium"
-                >Register</a
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- JavaScript for PWA -->
     <script>
@@ -1403,21 +1482,20 @@
         });
       });
 
-      // Modal handling
-      document.querySelectorAll(".modal-close").forEach((closeBtn) => {
-        closeBtn.addEventListener("click", function () {
-          document.querySelectorAll(".modal").forEach((modal) => {
-            modal.classList.remove("open");
-          });
+      // Settings button functionality
+      document.getElementById("settings-btn").addEventListener("click", function() {
+        // Update active nav item
+        document.querySelectorAll(".nav-item").forEach((navItem) => {
+          navItem.classList.remove("active");
         });
+        document.querySelector('[data-page="settings-page"]').classList.add("active");
+        
+        // Show settings page
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+        document.getElementById("settings-page").classList.add("active");
       });
-
-      // Open login modal from profile button
-      document
-        .getElementById("profile-btn")
-        .addEventListener("click", function () {
-          document.getElementById("login-modal").classList.add("open");
-        });
 
       // Pull to refresh simulation
       let touchStartY = 0;
@@ -1479,5 +1557,6 @@
         });
       }
     </script>
+    <script type="module" src="https://unpkg.com/@capacitor/core@latest/dist/capacitor.esm.js"></script>
   </body>
 </html>
