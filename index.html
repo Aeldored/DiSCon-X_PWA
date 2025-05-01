@@ -57,6 +57,13 @@
         overflow-x: hidden;
         position: relative;
       }
+      .font-medium {
+        white-space: nowrap;        /* Prevents the text from wrapping */
+        overflow: hidden;           /* Ensures hidden overflow */
+        text-overflow: ellipsis;    /* Adds "..." at the end */
+        max-width: 150px;           /* Set an appropriate width */
+        display: inline-block;      /* Ensures proper alignment */
+      }
 
       /* Desktop Restriction Banner */
       .desktop-restriction {
@@ -626,7 +633,7 @@
           <div class="relative">
             <input
               type="search"
-              placeholder="Search for Wi-Fi networks..."
+              placeholder="     Search for Wi-Fi networks..."
               class="form-input pl-10"
             />
             <i
@@ -821,12 +828,29 @@
               </div>
               <span class="text-xs text-gray-500">35s ago</span>
             </div>
+
+            <div
+            class="bg-white rounded-lg p-3 shadow-sm mb-3 flex items-center"
+          >
+            <div
+              class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-3"
+            >
+              <i class="fas fa-times text-red-600"></i>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-medium">OPEN_WiFi_CalambaCity</h4>
+              <p class="text-xs text-gray-500">
+                Suspicious - potential evil twin
+              </p>
+            </div>
+            <span class="text-xs text-gray-500">58s ago</span>
+          </div>
           </div>
 
-          <button class="primary-btn mt-6">
-            <i class="fas fa-stop-circle mr-2"></i>
-            Stop Scanning
-          </button>
+          <button class="primary-btn mt-6" style="margin-top: 0px; margin-bottom: 16px;">
+                  <i class="fas fa-stop-circle mr-2"></i>
+                  Stop Scanning
+                </button>
         </div>
       </section>
 
@@ -1043,7 +1067,7 @@
               <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="bg-gray-100 h-24 relative">
                   <img
-                    src="/api/placeholder/400/200"
+                    src="image2.png"
                     alt="Evil Twin Attacks"
                     class="w-full h-full object-cover"
                   />
@@ -1076,7 +1100,7 @@
               <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                 <div class="bg-gray-100 h-24 relative">
                   <img
-                    src="/api/placeholder/400/200"
+                    src="image1.png"
                     alt="Public Wi-Fi Safety"
                     class="w-full h-full object-cover"
                   />
